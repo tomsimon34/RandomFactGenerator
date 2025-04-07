@@ -1,25 +1,42 @@
-import logo from './logo.svg';
 import './App.css';
+import React, {useState, useEffect} from "react";
+
+const URL = 'https://api.api-ninjas.com/v1/facts';
+
 
 function App() {
+
+  const [fact, setFact] = useState('');
+
+  useEffect(() => {
+    getRandomFact();
+  }, []);
+
+  async function getRandomFact() {
+    const response = await fetch(URL, {
+      headers: {
+        'X-Api-Key': 'iyOlkUKFQKkeliUJAcCHLA==LJLo2kRwNismBbyt'
+      }
+    });
+    
+    const data = await response.json();
+
+    setFact(data[0].fact);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <p>
+        "{fact}"
+      </p>
+      <button onClick={getRandomFact}>
+        Generate Random Fact
+      </button>
     </div>
-  );
+  )
+  
+
 }
+
 
 export default App;
