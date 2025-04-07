@@ -15,7 +15,7 @@ function App() {
   async function getRandomFact() {
     const response = await fetch(URL, {
       headers: {
-        'X-Api-Key': 'iyOlkUKFQKkeliUJAcCHLA==LJLo2kRwNismBbyt'
+        'X-Api-Key': process.env.REACT_APP_NINJAS_API
       }
     });
     
