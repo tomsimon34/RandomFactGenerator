@@ -5,6 +5,7 @@ const URL = 'https://api.api-ninjas.com/v1/facts';
 
 function App() {
   const [fact, setFact] = useState('Loading random fact...');
+  const [counter, setCounter] = useState(0);
 
   useEffect(() => {
     getRandomFact();
@@ -19,12 +20,14 @@ function App() {
 
     const data = await response.json();
     setFact(data[0].fact);
+    setCounter(prevCounter => prevCounter + 1);
   }
 
   return (
     <div className="App">
       <header className="App-header"> {/* Apply styles here */}
         <p>"{fact}"</p>
+        <p>Facts generated: {counter}</p>
         <button onClick={getRandomFact}>Generate Random Fact</button>
       </header>
     </div>
