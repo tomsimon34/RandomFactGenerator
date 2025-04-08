@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 const URL = 'https://api.api-ninjas.com/v1/facts';
 
 function App() {
-  const [fact, setFact] = useState('');
+  const [fact, setFact] = useState('Loading random fact...');
 
   useEffect(() => {
     getRandomFact();
